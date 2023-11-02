@@ -41,6 +41,26 @@ router.delete('/user/:user_id', async (req, res) => {
 });
 
 
+router.put('/user/:user_id', async (req, res) => {
+  try {
+    const userId = req.params.user_id;
+    const updateData = req.body; // You can send the updated data in the request body
+
+    // Find the user by ID and update it
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 
 
 
