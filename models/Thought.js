@@ -1,19 +1,6 @@
 const mongoose = require('mongoose');
 
-const reactionSchema = new mongoose.Schema({
-  reactionBody: {
-    type: String,
-    required: true,
-  },
-  username: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+const reactionSchema = require('../models/Reaction');
 
 const thoughtSchema = new mongoose.Schema({
   thoughtText: {

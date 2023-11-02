@@ -2,7 +2,9 @@ const express = require('express');
 
 const app = express();
 
-const api_routes = require('./controllers/api_routes');
+const user_routes = require('./controllers/user_routes');
+const thought_routes = require('./controllers/thought_routes.js');
+const reaction_routes = require('./controllers/reaction_routes.js');
 
 const PORT = 3333;
 
@@ -14,7 +16,7 @@ const db = require('./config/connection');
 // Allow json to be sent by client
 app.use(express.json());
 
-app.use('/', api_routes);
+app.use('/', [user_routes, thought_routes, reaction_routes]);
 
 
 app.get('*', (req, res) => {
