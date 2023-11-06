@@ -20,10 +20,6 @@ const reactionSchema = new mongoose.Schema({
   },
 });
 
-// Use a getter method to format the timestamp on query
-reactionSchema.path('createdAt').get(function (value) {
-  // Format the timestamp using your preferred format (e.g., ISO)
-  return value.toISOString();
-});
+const Reaction = mongoose.model('Reaction', reactionSchema);
 
-module.exports = reactionSchema;
+module.exports = Reaction;

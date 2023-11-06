@@ -39,13 +39,13 @@ router.delete('/thought/:thought_id', async (req, res) => {
   res.status(200).json({ message: 'Delete Success' });
 });
 
-
+// Update thought by ID
 router.put('/thought/:thought_id', async (req, res) => {
   try {
     const thoughtId = req.params.thought_id;
-    const updateData = req.body; // You can send the updated data in the request body
+    const updateData = req.body; 
 
-    // Find the thought by ID and update it
+ 
     const updatedThought = await Thought.findByIdAndUpdate(thoughtId, updateData, { new: true });
 
     if (!updatedThought) {
