@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-
-const reactionSchema = require('../models/Reaction');
+const mongoose = require("mongoose");
 
 const thoughtSchema = new mongoose.Schema({
   thoughtText: {
@@ -20,11 +18,16 @@ const thoughtSchema = new mongoose.Schema({
   reactions: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Reaction'
-    }
+      ref: "Reaction", // Reference to the Reaction model
+    },
   ],
 });
 
-const Thought = mongoose.model('Thought', thoughtSchema);
+// Define a virtual field for reaction count
+thoughtSchema.virtual("reactionCount").get(function () {
+  return this.reactions.length;
+});
+
+const Thought = mongoose.model("Thought", thoughtSchema);
 
 module.exports = Thought;

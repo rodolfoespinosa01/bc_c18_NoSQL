@@ -21,7 +21,7 @@ router.put('/reaction/:thought_id', async (req, res) => {
   }
 
   // Generate a new reactionId
-  const reactionId = new mongoose.Types.ObjectId(); // Import mongoose if not already imported
+  const reactionId = new mongoose.Types.ObjectId();
 
 
   await Reaction.create({ ...reactionData, reactionId });
